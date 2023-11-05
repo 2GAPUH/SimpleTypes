@@ -140,6 +140,7 @@
     <ClInclude Include="IManagable.h" />
     <ClInclude Include="IPrintable.h" />
     <ClInclude Include="IValue.h" />
+    <ClInclude Include="SimpleTypes.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Vector2d.h" />
     <ClInclude Include="Vector3d.h" />

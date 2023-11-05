@@ -60,28 +60,74 @@ void Append(IManagable** array, int& type2, int& size)
 
 void Min(IManagable** array,  int& size)
 {
-
+	if (size > 0)
+	{
+		int minPos = 0;
+		for (int i = 0; i < size; i++)
+			if (array[i]->Value() < array[minPos]->Value())
+				minPos = i;
+		std::cout << "min = ";
+		array[minPos]->PrintFull();
+		std::cout << "\n";
+	}
 }
 
-void Max()
+void Max(IManagable** array, int& size)
 {
-
+	if (size > 0)
+	{
+		int maxPos = 0;
+		for (int i = 0; i < size; i++)
+			if (array[i]->Value() > array[maxPos]->Value())
+				maxPos = i;
+		std::cout << "max = ";
+		array[maxPos]->PrintFull();
+		std::cout << "\n";
+	}
 }
 
-bool Find()
+void Find(IManagable** array, int& size)
 {
-	return 1;
+	if (size > 0)
+	{
+		float buf = 0.;
+		std::cout << "Enter value: ";
+		std::cin >> buf;
+		for (int i = 0; i < size; i++)
+			if (buf == array[i]->Value())
+			{
+				std::cout << "Value found\n";
+				return;
+			}
+		std::cout << "Value not found\n";
+	}
 }
 
-void PrintLine()
+void PrintLine(IManagable** array, int& size)
 {
-
+	if (size > 0)
+	{
+		for (int i = 0; i < size;i++)
+		{
+			array[i]->PrintShort();
+			std::cout << ", ";
+		}
+		std::cout << "\b\b  ";
+		std::cout << "\n";
+	}
 }
 
 
-void PrintColumn()
+void PrintColumn(IManagable** array, int& size)
 {
-
+	if (size > 0)
+	{
+		for (int i = 0; i < size;i++)
+		{
+			array[i]->PrintFull();
+			std::cout << "\n";
+		}
+	}
 }
 
 float TotalSum()
@@ -109,9 +155,24 @@ void Join()
 
 }
 
-void Sort()
+void Sort(IManagable** array, int& size)
 {
-
+	if (size > 0)
+	{
+		IManagable* tmp = nullptr;
+		for (int i = size - 1; i >= 0; i--)
+		{
+			for (int j = 0; j < i; j++)
+			{
+				if (array[j]->Value() > array[j + 1]->Value())
+				{
+					tmp = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = tmp;
+				}
+			}
+		}
+	}
 }
 
 void PrintUnique()
@@ -136,6 +197,7 @@ int main()
 12 - Other add\n13 - Print unique\n0 - Exit\nEnter your choice: ";
 	std::string instruction2 = "1 - Complex array \n2 - Text array \n3 - Vector2d array \n4 - Vector3d array \nEnter your choice: ";
 
+
 	while (type1)
 	{
 		system("cls");
@@ -150,12 +212,16 @@ int main()
 			switch (type2)
 			{
 			case 1:
+				Sort(complex, complexSize);
 				break;
 			case 2:
+				Sort(text, textSize);
 				break;
 			case 3:
+				Sort(vector2d, vector2dSize);
 				break;
 			case 4:
+				Sort(vector3d, vector3dSize);
 				break;
 			}
 			break;
@@ -164,12 +230,16 @@ int main()
 			switch (type2)
 			{
 			case 1:
+				Min(complex, complexSize);
 				break;
 			case 2:
+				Min(text, textSize);
 				break;
 			case 3:
+				Min(vector2d, vector2dSize);
 				break;
 			case 4:
+				Min(vector3d, vector3dSize);
 				break;
 			}
 			break;
@@ -178,12 +248,16 @@ int main()
 			switch (type2)
 			{
 			case 1:
+				Max(complex, complexSize);
 				break;
 			case 2:
+				Max(text, textSize);
 				break;
 			case 3:
+				Max(vector2d, vector2dSize);
 				break;
 			case 4:
+				Max(vector3d, vector3dSize);
 				break;
 			}
 			break;
@@ -192,42 +266,57 @@ int main()
 			switch (type2)
 			{
 			case 1:
+				Find(complex, complexSize);
 				break;
 			case 2:
+				Find(text, textSize);
 				break;
 			case 3:
+				Find(vector2d, vector2dSize);
 				break;
 			case 4:
+				Find(vector3d, vector3dSize);
 				break;
 			}
+			system("pause");
 			break;
 
 		case 5:
 			switch (type2)
 			{
 			case 1:
+				PrintLine(complex, complexSize);
 				break;
 			case 2:
+				PrintLine(text, textSize);
 				break;
 			case 3:
+				PrintLine(vector2d, vector2dSize);
 				break;
 			case 4:
+				PrintLine(vector3d, vector3dSize);
 				break;
 			}
+			system("pause");
 			break;
 
 		case 6:
 			switch (type2)
 			{
 			case 1:
+				PrintColumn(complex, complexSize);
 				break;
 			case 2:
+				PrintColumn(text, textSize);
 				break;
 			case 3:
+				PrintColumn(vector2d, vector2dSize);
 				break;
 			case 4:
+				PrintColumn(vector3d, vector3dSize);
 				break;
 			}
+			system("pause");
 			break;
 
 		case 7:

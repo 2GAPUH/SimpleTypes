@@ -12,7 +12,7 @@ void Text::PrintShort()
 
 void Text::PrintFull()
 {
-	std::cout << buf << std::endl;
+	std::cout << buf;
 }
 
 float Text::Value()
