@@ -12,38 +12,6 @@ void Append(IManagable** array, int& size, IManagable* element, int& position)
 	if (array[position] != 0)
 		delete array[position];
 	array[position] = element;
-
-
-
-	/*
-	{
-		
-
-		std::cout << "Enter start x: ";
-		std::cin >> startPoint1.x;
-		std::cout << "Enter start y: ";
-		std::cin >> startPoint1.y;
-		std::cout << "Enter end x: ";
-		std::cin >> endPoint1.x;
-		std::cout << "Enter end y: ";
-		std::cin >> endPoint1.y;
-		array[size++] = new Vector2d(startPoint1, endPoint1);
-
-		std::cout << "Enter start x: ";
-		std::cin >> startPoint.x;
-		std::cout << "Enter start y: ";
-		std::cin >> startPoint.y;
-		std::cout << "Enter start z: ";
-		std::cin >> startPoint.z;
-		std::cout << "Enter end x: ";
-		std::cin >> endPoint.x;
-		std::cout << "Enter end y: ";
-		std::cin >> endPoint.y;
-		std::cout << "Enter end z: ";
-		std::cin >> endPoint.z;
-		array[size++] = new Vector3d(startPoint, endPoint);
-
-	}*/
 }
 
 int Min(IManagable** array, int& size)

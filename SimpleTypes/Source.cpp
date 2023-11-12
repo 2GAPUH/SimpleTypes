@@ -27,6 +27,7 @@ void SetElement(int& type, IManagable** array, int& arraySize, int& pos)
 		break;
 
 	case 2:
+		while (getchar() != '\n');
 		std::cout << "Enter message: ";
 		std::cin.getline(buf, BUFFER_SIZE);
 		Append(array, arraySize, (IManagable*)(new Text(buf)), pos);
@@ -199,13 +200,14 @@ int main()
 			system("pause");
 
 		case 11:
-			Join(array, array, arraySize, arraySize);
+			tempI1 = arraySize;
+			array = (IManagable**)realloc(array, sizeof(IManagable*) * (++arraySize));
+			array[tempI1] = nullptr;
+			SetElement(type, array, arraySize, tempI1);
 			break;
 
 		case 12:
-			array = (IManagable**)realloc(array, sizeof(IManagable*) * (arraySize + 1));
-			SetElement(type, array, arraySize, arraySize);
-			arraySize++;
+			Join(array, array, arraySize, arraySize);
 			break;
 
 		case 13:
